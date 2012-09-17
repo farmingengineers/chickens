@@ -7,13 +7,21 @@
     = csrf_meta_tags
 
   %body
-    - if user_signed_in?
-      = current_user
-      = link_to 'Sign out', destroy_user_session_path, :method => :delete
-    - else
-      = link_to 'Sign in', new_user_session_path
-      or
-      = link_to 'Sign up', new_user_registration_path
+    %header
+      .user-menu
+        - if user_signed_in?
+          = current_user
+          = link_to 'Sign out', destroy_user_session_path, :method => :delete
+        - else
+          = link_to 'Sign in', new_user_session_path
+          or
+          = link_to 'Sign up', new_user_registration_path
+      - if user_signed_in?
+        .main-menu
+          %ul
+            %li= link_to 'New Flock', 'todo'
+            %li= link_to 'Record data', 'todo'
+            %li= link_to 'Reports', 'todo'
 
     %p{class: "notice"}= notice
     %p{class: "alert"}= alert
