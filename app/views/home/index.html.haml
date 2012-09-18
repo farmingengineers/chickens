@@ -1,1 +1,8 @@
 Welcome to the chicken app!
+
+- if user_signed_in?
+  %h2 Your flocks
+  %ul.flocks
+    - flocks.each do |flock|
+      %li= flock.name
+  = link_to 'Add a flock', new_flock_path

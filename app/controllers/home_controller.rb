@@ -1,4 +1,3 @@
 class HomeController < ApplicationController
-  def index
-  end
+  expose(:flocks) { current_user.try(:flocks) }
 end

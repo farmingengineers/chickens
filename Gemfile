@@ -17,6 +17,7 @@ end
 gem 'jquery-rails'
 gem 'haml-rails'
 gem 'devise'
+gem 'decent_exposure'
 
 group :development do
   gem 'heroku'

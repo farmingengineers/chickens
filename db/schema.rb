@@ -11,7 +11,30 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120917154601) do
+ActiveRecord::Schema.define(:version => 20120917174526) do
+
+  create_table "farmers", :force => true do |t|
+    t.integer  "farm_id"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "farmers", ["farm_id"], :name => "index_farmers_on_farm_id"
+  add_index "farmers", ["user_id"], :name => "index_farmers_on_user_id"
+
+  create_table "farms", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "flocks", :force => true do |t|
+    t.string   "name"
+    t.integer  "farm_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
