@@ -5,6 +5,7 @@ class FlocksController < ApplicationController
   expose(:flock)
 
   def update
+    # TODO -- scrub the incoming parameters!
     flock.save!
     redirect_to root_path
   end
