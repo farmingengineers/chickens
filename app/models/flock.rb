@@ -2,7 +2,7 @@ class Flock < ActiveRecord::Base
   belongs_to :farm
   has_many :data_points
   has_many :feedings
-  has_many :collections
+  has_many :egg_collections
   attr_accessible :farm, :name
 
   def to_s

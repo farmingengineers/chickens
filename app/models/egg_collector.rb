@@ -1,13 +1,13 @@
-class Feeder < Bookkeeper
+class EggCollector < Bookkeeper
 
   protected
 
   def quantity_param
-    :pounds
+    :eggs
   end
 
   def data_association
-    flock.feedings
+    flock.egg_collections
   end
 
 end

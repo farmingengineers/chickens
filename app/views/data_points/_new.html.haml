@@ -1,0 +1,14 @@
+= form_tag :action => :create do
+  .field
+    = label_tag :start_on
+    = text_field_tag :start_on, nil, class: 'date'
+  .field
+    = label_tag :frequency
+    %select{name: 'frequency'}
+      %option{value: 'daily'} Daily
+      %option{value: 'weekly'} Weekly
+  .field
+    = label_tag quantity_param
+    = text_area_tag quantity_param
+  .field
+    = submit_tag

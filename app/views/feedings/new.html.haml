@@ -2,17 +2,4 @@
   Feed
   = flock
 
-= form_tag flock_feedings_path(flock), :method => :post do
-  .field
-    = label_tag :start_on
-    = text_field_tag :start_on, nil, class: 'date'
-  .field
-    = label_tag :frequency
-    %select{name: 'frequency'}
-      %option{value: 'daily'} Daily
-      %option{value: 'weekly'} Weekly
-  .field
-    = label_tag :values
-    = text_area_tag :values
-  .field
-    = submit_tag
+= render 'data_points/new', :quantity_param => :pounds

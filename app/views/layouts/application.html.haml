@@ -19,6 +19,7 @@
       - if user_signed_in?
         .main-menu
           %ul
+            %li= link_to 'Home', root_path
             %li= link_to 'New Flock', new_flock_path
             %li= link_to 'Record data', 'todo'
             %li= link_to 'Reports', 'todo'
