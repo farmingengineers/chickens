@@ -5,3 +5,8 @@
 require File.expand_path('../config/application', __FILE__)
 
 MattsChickens::Application.load_tasks
+
+task :deploy do
+  sh 'git push git@heroku.com:chickens.git master'
+  sh 'heroku run bundle exec rake db:migrate'
+end

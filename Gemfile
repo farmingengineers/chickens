@@ -20,8 +20,8 @@ gem 'devise'
 gem 'decent_exposure'
 
 group :development do
-  gem 'heroku'
-  gem 'powder'
+  gem 'heroku', :require => false
+  gem 'powder', :require => false
   gem 'letter_opener'
 end
 
