@@ -5,6 +5,8 @@ class Flock < ActiveRecord::Base
   has_many :egg_collections
   attr_accessible :farm, :name
 
+  default_scope order(:name)
+
   def to_s
     name
   end
