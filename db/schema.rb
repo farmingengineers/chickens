@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120921052859) do
+ActiveRecord::Schema.define(:version => 20120921155428) do
 
   create_table "data_points", :force => true do |t|
     t.integer  "flock_id"
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(:version => 20120921052859) do
     t.float    "quantity"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
+    t.string   "type"
   end
 
   add_index "data_points", ["entered_by_id"], :name => "index_data_points_on_entered_by_id"

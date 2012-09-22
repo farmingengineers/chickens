@@ -3,6 +3,7 @@ class FlocksController < ApplicationController
 
   expose(:flocks) { current_user.flocks }
   expose(:flock)
+  expose(:recent_activity) { flock.recent_activity }
 
   def update
     # TODO -- scrub the incoming parameters!

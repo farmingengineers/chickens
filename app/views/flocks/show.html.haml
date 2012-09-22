@@ -1,6 +1,7 @@
 %h1= flock
 
-%h3 todo
+%h3 Recent Activity
+
 %ul
-  %li Show a calendar
-  %li place feed and eggs on calendar, differentiated by color
+  - recent_activity.each do |activity|
+    %li= activity
