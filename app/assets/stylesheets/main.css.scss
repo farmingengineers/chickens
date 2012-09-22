@@ -18,11 +18,10 @@ body > .env-marker {
 }
 
 ul.flocks li {
-  > a {
-    display: inline-block;
-    width: 200px;
-  }
+  position: relative;
   > .actions {
     display: inline-block;
+    position: absolute;
+    left: 350px;
   }
 }
