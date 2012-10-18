@@ -7,14 +7,12 @@ body > .env-marker {
   text-align: center;
 }
 
-:link {
-  text-decoration: none;
-  &:hover { text-decoration: underline; }
-}
+.no-touch {
+  :link       { text-decoration: none;      }
+  :link:hover { text-decoration: underline; }
 
-.actions {
-  visibility: hidden;
-  :hover > & { visibility: visible; }
+  .actions          { visibility: hidden;  }
+  :hover > .actions { visibility: visible; }
 }
 
 ul.flocks li {

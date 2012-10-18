@@ -12,5 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require modernizr
 //= require textarea_expander
 //= require_tree .
