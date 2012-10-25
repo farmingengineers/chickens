@@ -5,6 +5,7 @@ class Flock < ActiveRecord::Base
   has_many :egg_collections
   attr_accessible :farm, :name
 
+  default_scope order(:name)
   scope :summary, joins('LEFT OUTER JOIN data_points ON data_points.flock_id = flocks.id').select('flocks.id, flocks.name, max(data_points.occurred_on) as most_recent_activity_on').group('flocks.id, flocks.name').order('flocks.name')
 
   def to_s
