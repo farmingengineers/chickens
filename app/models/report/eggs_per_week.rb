@@ -39,12 +39,8 @@ module Report
     end
 
     def weeks
-      enum_for :each_week
-    end
-
-    def weeks
-      if earliest = flocks.map { |flock| flock.earliest_date }.compact.min
-        earliest.beginning_of_week(:sunday).step(Date.today, 7)
+      if earliest = flocks.map { |flock| flock.first_week }.compact.min
+        earliest.step(Date.today, 7)
       else
         []
       end
@@ -63,9 +59,9 @@ module Report
         flock.name
       end
 
-      def earliest_date
-        @earliest_date ||=
-          flock.egg_collections.minimum(:occurred_on).tap { |x| Rails.logger.debug "#{flock.inspect} -- #{x}" }
+      def first_week
+        @first_week ||=
+          flock.egg_collections.minimum(:occurred_on).try(:beginning_of_week, week_start_day)
       end
 
       def eggs_per_week week_start
@@ -81,7 +77,14 @@ module Report
       # My SQL skills aren't quite up to the task of generating this all
       # in one sum-tastic query.
       def all_weeks
-        ->(week_start) { flock.egg_collections.where('occurred_on BETWEEN ? AND ?', week_start, week_start + 6).sum(:quantity) }
+        @all_weeks ||=
+          flock.egg_collections.each_with_object(Hash.new(0)) { |eggs, all_weeks|
+            all_weeks[eggs.occurred_on.beginning_of_week(week_start_day)] += eggs.quantity.to_i
+          }
+      end
+
+      def week_start_day
+        :sunday
       end
     end
   end
