@@ -18,6 +18,10 @@ module Report
       @params = params
     end
 
+    def human_name
+      self.class.human_name
+    end
+
     def to_yaml
       rows.to_yaml
     rescue => e
@@ -27,7 +31,7 @@ module Report
 
     def rows
       [ [nil] + flocks.map { |flock| flock.to_s } ] +
-      weeks.map { |week| [week] + flocks.map { |flock| flock.eggs_per_week(week) } }
+      weeks.map { |week| [week] + flocks.map { |flock| flock.eggs_per_week(week) } }.reverse
     end
 
     private

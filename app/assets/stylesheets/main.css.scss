@@ -23,3 +23,18 @@ ul.flocks li {
     left: 350px;
   }
 }
+
+table.report {
+  > thead > tr > th {
+    font-weight: bold;
+    border-left: solid 1px black;
+    border-right: solid 1px black;
+    padding: .3em;
+  }
+  > tbody > tr > td {
+    text-align: right;
+    border-left: solid 1px black;
+    border-right: solid 1px black;
+    padding: .3em;
+  }
+}
