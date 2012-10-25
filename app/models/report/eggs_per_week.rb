@@ -64,16 +64,25 @@ module Report
       end
 
       def earliest_date
-        flock.egg_collections.minimum(:occurred_on).tap { |x| Rails.logger.debug "#{flock.inspect} -- #{x}" }
+        @earliest_date ||=
+          flock.egg_collections.minimum(:occurred_on).tap { |x| Rails.logger.debug "#{flock.inspect} -- #{x}" }
       end
 
       def eggs_per_week week_start
-        flock.egg_collections.where('occurred_on BETWEEN ? AND ?', week_start, week_start + 6).sum(:quantity)
+        all_weeks[week_start]
       end
 
       private
 
       attr_reader :flock
+
+      # Returns a Hash-like object that maps weeks to a count of eggs
+      #
+      # My SQL skills aren't quite up to the task of generating this all
+      # in one sum-tastic query.
+      def all_weeks
+        ->(week_start) { flock.egg_collections.where('occurred_on BETWEEN ? AND ?', week_start, week_start + 6).sum(:quantity) }
+      end
     end
   end
 end
