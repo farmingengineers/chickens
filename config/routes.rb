@@ -3,5 +3,6 @@ MattsChickens::Application.routes.draw do
   resources :flocks do
     resources :feedings, :egg_collections
   end
+  resources :reports
   devise_for :users
 end
