@@ -3,6 +3,7 @@ module Report
     def all
       [
         Report::EggsPerWeek,
+        Report::FeedPerWeek,
       ]
     end
 

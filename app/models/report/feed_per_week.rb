@@ -1,8 +1,9 @@
 module Report
-  class EggsPerWeek
+  class FeedPerWeek
+    # D3 graph http://d3js.org/
     class << self
       def human_name
-        'Eggs per week'
+        'Feed per week'
       end
 
       def id
@@ -31,7 +32,7 @@ module Report
 
     def rows
       [ [nil] + flocks.map { |flock| flock.to_s } ] +
-      weeks.map { |week| [week] + flocks.map { |flock| flock.eggs_per_week(week) } }.reverse
+      weeks.map { |week| [week] + flocks.map { |flock| flock.feed_per_week(week) } }.reverse
     end
 
     private
@@ -65,10 +66,10 @@ module Report
 
       def first_week
         @first_week ||=
-          flock.egg_collections.minimum(:occurred_on).try(:beginning_of_week, week_start_day)
+          flock.feedings.minimum(:occurred_on).try(:beginning_of_week, week_start_day)
       end
 
-      def eggs_per_week week_start
+      def feed_per_week week_start
         all_weeks[week_start]
       end
 
@@ -76,14 +77,14 @@ module Report
 
       attr_reader :flock
 
-      # Returns a Hash-like object that maps weeks to a count of eggs
+      # Returns a Hash-like object that maps weeks to a total amount of feed
       #
       # My SQL skills aren't quite up to the task of generating this all
       # in one sum-tastic query.
       def all_weeks
         @all_weeks ||=
-          flock.egg_collections.each_with_object(Hash.new(0)) { |eggs, all_weeks|
-            all_weeks[eggs.occurred_on.beginning_of_week(week_start_day)] += eggs.eggs
+          flock.feedings.each_with_object(Hash.new(0)) { |feed, all_weeks|
+            all_weeks[feed.occurred_on.beginning_of_week(week_start_day)] += feed.pounds
           }
       end
 
