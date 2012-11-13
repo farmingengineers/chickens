@@ -47,4 +47,5 @@ table.report {
 .editing     { .is-not-editing { display: none; } }
 
 /* todo - css animation */
+.deleting { background-color: yellow; }
 .deleted { display: none; }
