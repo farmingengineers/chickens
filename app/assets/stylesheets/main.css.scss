@@ -15,11 +15,14 @@ body > .env-marker {
   :hover > .actions { visibility: visible; }
 }
 
-ul.flocks li {
+li.flock {
   position: relative;
+  > .summary {
+    width: 350px;
+  }
   > .actions {
-    display: inline-block;
     position: absolute;
+    top: 0;
     left: 350px;
   }
 }

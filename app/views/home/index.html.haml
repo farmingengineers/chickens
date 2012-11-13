@@ -4,13 +4,14 @@ Welcome to the chicken app!
   %h2 Your flocks
   %ul.flocks
     - flocks.each do |flock|
-      %li
-        = link_to flock.name, flock
-        - if flock.most_recent_activity_on
-          last modified
-          %time{date: flock.most_recent_activity_on, title: flock.most_recent_activity_on}
-            = time_ago_in_words flock.most_recent_activity_on
-          ago
+      %li.flock
+        .summary
+          = link_to flock.name, flock
+          - if flock.most_recent_activity_on
+            last modified
+            %time{date: flock.most_recent_activity_on, title: flock.most_recent_activity_on}
+              = time_ago_in_words flock.most_recent_activity_on
+            ago
         .actions
           = link_to 'Edit', edit_flock_path(flock)
           = link_to 'Feed', new_flock_feeding_path(flock)
