@@ -42,6 +42,9 @@ table.report {
   }
 }
 
-.edit-activities.editing { display: none; }
-.done-editing-activities.not-editing { display: none; }
-input.not-editing { display: none; }
+
+.not-editing { .is-editing     { display: none; } }
+.editing     { .is-not-editing { display: none; } }
+
+/* todo - css animation */
+.deleted { display: none; }

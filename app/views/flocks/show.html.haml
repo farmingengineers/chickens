@@ -4,14 +4,12 @@
 
 %h3 Recent Activity
 
-%button.edit-activities.not-editing Edit
-%button.done-editing-activities.not-editing Done
+.not-editing
+  %button.is-not-editing.js-start-editing Edit
+  %button.is-editing.js-finish-editing Done
 
-= form_for :activity, :url => flock_activities_path(flock), :method => :delete, :html => { :class => 'edit-activities-form' } do |f|
-  = f.submit 'Delete Selected', :class => 'delete-submit not-editing'
   %ul
     - recent_activity.each do |activity|
-      %li
-        = check_box_tag 'id[]', activity.id, false, :class => 'not-editing'
+      %li.deletable
+        = link_to 'Delete', [flock, activity], :method => :delete, :remote => true, :class => 'is-editing delete-button'
         = activity
-  = f.submit 'Delete Selected', :class => 'delete-submit not-editing'
