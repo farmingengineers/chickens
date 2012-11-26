@@ -20,7 +20,7 @@ module Report
       end
 
       def first_week
-        [eggs, feedings].map(&:first_week).min
+        [eggs, feedings].map(&:first_week).compact.min
       end
 
       def data_point week
