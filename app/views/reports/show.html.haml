@@ -2,7 +2,9 @@
 
 %h1= report.human_name
 
-%table.report
+.report{'data-report' => url_for(:format => 'json')}
+
+-#%table.report
   %thead
     %tr
       - header_row.each do |col|

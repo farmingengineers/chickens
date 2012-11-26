@@ -27,18 +27,20 @@ li.flock {
   }
 }
 
-table.report {
-  > thead > tr > th {
-    font-weight: bold;
-    border-left: solid 1px black;
-    border-right: solid 1px black;
-    padding: .3em;
-  }
-  > tbody > tr > td {
-    text-align: right;
-    border-left: solid 1px black;
-    border-right: solid 1px black;
-    padding: .3em;
+.report {
+  table {
+    > thead > tr > th {
+      font-weight: bold;
+      border-left: solid 1px black;
+      border-right: solid 1px black;
+      padding: .3em;
+    }
+    > tbody > tr > td {
+      text-align: right;
+      border-left: solid 1px black;
+      border-right: solid 1px black;
+      padding: .3em;
+    }
   }
 }
 
