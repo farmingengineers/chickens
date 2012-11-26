@@ -4,7 +4,7 @@ module Report
     include WeeklyTable
     include PerFlock
 
-    human_name 'Feed conversion'
+    human_name 'Feed conversion (doz eggs / 50 lb)'
 
     def adapt flock
       FlockConversion.new(flock)
@@ -28,7 +28,7 @@ module Report
         f = feedings.data_point week
         if e > 0
           if f > 0
-            e / f
+            (e / 12.0) / (f / 50.0)
           else
             'inf'
           end
