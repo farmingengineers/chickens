@@ -25,7 +25,11 @@ module Report
     end
 
     def flocks
-      @flocks ||= user.flocks.map { |flock| ReportableFlock.new(flock, self.class.flock_association, self.class.data_field) }
+      @flocks ||= user.flocks.map { |flock| adapt(flock) }
+    end
+
+    def adapt flock
+      ReportableFlock.new(flock, self.class.flock_association, self.class.data_field)
     end
 
     class ReportableFlock
