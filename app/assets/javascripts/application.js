@@ -14,4 +14,5 @@
 //= require jquery_ujs
 //= require modernizr
 //= require textarea_expander
+//= require d3.v3
 //= require_tree .

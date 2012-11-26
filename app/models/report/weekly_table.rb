@@ -8,7 +8,7 @@ module Report
     end
 
     def rows
-      [ [nil] + column_names ] + weeks.map { |week| [week] + row(week) }.reverse
+      [ ['week'] + column_names ] + weeks.map { |week| [week] + row(week) }.reverse
     end
 
     protected
