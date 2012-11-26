@@ -11,6 +11,8 @@ module Report
     end
 
     class FlockConversion
+      include ConversionCalculator
+
       def initialize flock
         @flock = flock
       end
@@ -26,19 +28,7 @@ module Report
       def data_point week
         e = eggs.data_point week
         f = feedings.data_point week
-        if e > 0
-          if f > 0
-            (e / 12.0) / (f / 50.0)
-          else
-            'inf'
-          end
-        else
-          if f > 0
-            0
-          else
-            nil
-          end
-        end
+        conversion(:eggs => e, :feed => f)
       end
 
       private

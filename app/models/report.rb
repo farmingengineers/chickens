@@ -5,6 +5,7 @@ module Report
         Report::EggsPerWeek,
         Report::FeedPerWeek,
         Report::Conversion,
+        Report::TotalConversion,
       ]
     end
 
