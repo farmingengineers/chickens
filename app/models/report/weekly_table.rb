@@ -14,11 +14,15 @@ module Report
     protected
 
     def weeks
-      if earliest = flocks.map { |flock| flock.first_week }.compact.min
+      if earliest = first_week
         earliest.step(Date.today, 7)
       else
         []
       end
+    end
+
+    def first_week
+      raise 'implement this'
     end
 
     def column_names

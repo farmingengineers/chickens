@@ -16,6 +16,10 @@ module Report
 
     protected
 
+    def first_week
+      flocks.map { |flock| flock.first_week }.compact.min
+    end
+
     def column_names
       flocks.map &:to_s
     end
