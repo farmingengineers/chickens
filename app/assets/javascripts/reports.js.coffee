@@ -26,12 +26,15 @@ $ ->
       .append('g')
       .attr('transform', "translate(#{margin.left}, #{margin.top})")
 
-    d3.csv $(this).data('report'), (error, data) ->
+    report = $ this
+    d3.csv report.data('report'), (error, data) ->
       console.log error
 
-      dataColumns = d3.keys(data[0]).filter((key) -> key != 'week')
+      columns = d3.keys(data[0])
+      dataColumns = columns.filter((key) -> key != 'week')
 
       for row in data
+        row.raw_week = row.week
         row.week = parseDate row.week
 
       lines =
@@ -79,3 +82,13 @@ $ ->
         .attr('x', 3)
         .attr('dy', '.35em')
         .text((d) -> d.name)
+
+
+      table = $('<table></table>').appendTo(report)
+      thead = $('<thead></thead>').appendTo(table)
+      tbody = $('<tbody></tbody>').appendTo(table)
+      thead.html("<tr><th>week</th>#{("<th>#{col}</th>" for col in dataColumns).join('')}</tr>")
+      for row in data
+        $('<tr></tr>')
+          .html("<td>#{row.raw_week}</td>" + ("<td>#{row[col] || ''}</td>" for col in dataColumns).join(''))
+          .appendTo tbody
