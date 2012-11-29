@@ -9,7 +9,8 @@ class ReportsController < ApplicationController
   def show
     respond_to do |format|
       format.html
-      format.csv { render :text => report.rows.map(&:to_csv).join('') }
+      format.json { render :json => report.to_hash }
+      format.csv { render :text => report.to_csv }
     end
   end
 end
