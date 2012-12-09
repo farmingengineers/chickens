@@ -3,7 +3,7 @@ require 'spec_helper'
 describe FlockBuilder do
   let(:flock_builder) { FlockBuilder.new current_user }
   let(:current_user) { mock_model('User', :farms => farms) }
-  let(:params) { { :flock => { :name => 'New flock' } } }
+  let(:params) { { :flock => { :name => 'New flock' } }.with_indifferent_access }
   subject { flock_builder.build params }
 
   shared_examples 'flock' do
