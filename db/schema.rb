@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121209230454) do
+ActiveRecord::Schema.define(:version => 20121209231235) do
 
   create_table "data_points", :force => true do |t|
     t.integer  "flock_id"
@@ -21,8 +21,10 @@ ActiveRecord::Schema.define(:version => 20121209230454) do
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
     t.string   "type"
+    t.integer  "data_type_id"
   end
 
+  add_index "data_points", ["data_type_id"], :name => "index_data_points_on_data_type_id"
   add_index "data_points", ["entered_by_id"], :name => "index_data_points_on_entered_by_id"
   add_index "data_points", ["flock_id"], :name => "index_data_points_on_flock_id"
 
