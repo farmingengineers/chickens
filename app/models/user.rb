@@ -12,6 +12,7 @@ class User < ActiveRecord::Base
   has_many :farmers
   has_many :farms, :through => :farmers
   has_many :flocks, :through => :farms
+  has_many :feed_types, :through => :farms
 
   def to_s
     email

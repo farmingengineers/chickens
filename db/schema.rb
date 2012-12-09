@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120921155428) do
+ActiveRecord::Schema.define(:version => 20121206131444) do
 
   create_table "data_points", :force => true do |t|
     t.integer  "flock_id"
@@ -41,6 +41,16 @@ ActiveRecord::Schema.define(:version => 20120921155428) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  create_table "feed_types", :force => true do |t|
+    t.integer  "farm_id"
+    t.string   "name"
+    t.string   "description"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "feed_types", ["farm_id"], :name => "index_feed_types_on_farm_id"
 
   create_table "flocks", :force => true do |t|
     t.string   "name"

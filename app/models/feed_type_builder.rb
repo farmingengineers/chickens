@@ -1,0 +1,2 @@
+class FeedTypeBuilder < FarmAssetBuilder
+end

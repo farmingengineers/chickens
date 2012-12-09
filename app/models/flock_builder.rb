@@ -1,17 +1,7 @@
-class FlockBuilder
-  def initialize user
-    @user = user
-  end
+class FlockBuilder < FarmAssetBuilder
+  protected
 
-  attr_reader :user
-
-  def build params
-    records = []
-    unless farm = user.farms.first
-      records << (farm = Farm.new)
-      records << Farmer.new(:farm => farm, :user => user)
-    end
-    records << Flock.new(:farm => farm, :name => params[:flock][:name])
-    records
+  def filter params
+    params.slice :name
   end
 end

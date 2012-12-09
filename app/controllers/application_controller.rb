@@ -17,6 +17,17 @@ class ApplicationController < ActionController::Base
 
   protected
 
+  def self.expose(name, alternates = {})
+    super(name)
+    if alternates.any?
+      alternates = alternates.stringify_keys
+      alias_method "decent_#{name}", name
+      define_method name do
+        send(alternates[action_name] || "decent_#{name}")
+      end
+    end
+  end
+
   def create_records
     record_builder.build params
   end
