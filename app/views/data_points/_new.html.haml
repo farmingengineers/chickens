@@ -1,7 +1,15 @@
+- data_types ||= nil
 = form_tag :action => :create do
   .field
     = label_tag :start_on
     = text_field_tag :start_on, nil, class: 'date'
+  - if data_types
+    .field
+      = label_tag 'data_type', data_type_label
+      %select{name: 'data_type_id'}
+        %option
+        - data_types.each do |dt|
+          %option{value: dt.to_param}= dt
   .field
     = label_tag :frequency
     %select{name: 'frequency'}

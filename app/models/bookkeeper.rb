@@ -12,14 +12,20 @@ class Bookkeeper
     dates = lazy_dates params
     quantities = params[quantity_param].split(/[\s,]+/).select(&:present?)
     quantities.zip(dates).map do |quantity, date|
-      data_association.build :entered_by => user, :occurred_on => date, :quantity => quantity
+      data_association.build base_attrs(params).merge :occurred_on => date, :quantity => quantity
     end
   end
+
+  protected
 
   def lazy_dates params
     start_date = params[:start_on].to_date
     step_size = StepSizes[params[:frequency]]
     LazySequence.new start_date, step_size
+  end
+
+  def base_attrs params
+    { :entered_by => user }
   end
 
   class LazySequence
