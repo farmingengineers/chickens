@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121206131444) do
+ActiveRecord::Schema.define(:version => 20121209230454) do
 
   create_table "data_points", :force => true do |t|
     t.integer  "flock_id"
@@ -25,6 +25,17 @@ ActiveRecord::Schema.define(:version => 20121206131444) do
 
   add_index "data_points", ["entered_by_id"], :name => "index_data_points_on_entered_by_id"
   add_index "data_points", ["flock_id"], :name => "index_data_points_on_flock_id"
+
+  create_table "data_types", :force => true do |t|
+    t.integer  "farm_id"
+    t.string   "name"
+    t.string   "description"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.string   "type"
+  end
+
+  add_index "data_types", ["farm_id"], :name => "index_feed_types_on_farm_id"
 
   create_table "farmers", :force => true do |t|
     t.integer  "farm_id"
@@ -41,16 +52,6 @@ ActiveRecord::Schema.define(:version => 20121206131444) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
-
-  create_table "feed_types", :force => true do |t|
-    t.integer  "farm_id"
-    t.string   "name"
-    t.string   "description"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-  end
-
-  add_index "feed_types", ["farm_id"], :name => "index_feed_types_on_farm_id"
 
   create_table "flocks", :force => true do |t|
     t.string   "name"

@@ -1,8 +1,2 @@
-class FeedType < ActiveRecord::Base
-  belongs_to :farm
-  attr_accessible :farm, :name, :description
-
-  def to_s
-    name
-  end
+class FeedType < DataType
 end
