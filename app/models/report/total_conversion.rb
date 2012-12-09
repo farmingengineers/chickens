@@ -10,7 +10,7 @@ module Report
       [feedings, eggs].flatten.map(&:first_week).compact.min
     end
 
-    def column_names
+    def data_column_names
       ['doz eggs / 50 lb']
     end
 

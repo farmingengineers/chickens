@@ -1,16 +1,3 @@
-- header_row, *data_rows = report.rows
-
 %h1= report.human_name
 
 .report{'data-report' => url_for(:format => 'json'), 'class' => report.types.join(' ')}
-
--#%table.report
-  %thead
-    %tr
-      - header_row.each do |col|
-        %th= col
-  %tbody
-    - data_rows.each do |row|
-      %tr
-        - row.each do |value|
-          %td= value

@@ -1,25 +1,13 @@
 module Report
   module WeeklyTable
-    def to_hash
-      {
-        :column_names => ['week'] + column_names,
-        :rows => rows,
-      }
-    end
-
-    def to_csv
-      rows.inject((['week'] + column_names).to_csv) { |csv, row| csv + row.to_csv }
-    end
-
-    def to_yaml(*args)
-      rows.to_yaml(*args)
-    rescue => e
-      puts e
-      raise
-    end
+    include Table
 
     def types
-      %W(graph table)
+      super + ['graph']
+    end
+
+    def category_column_name
+      'week'
     end
 
     def rows
@@ -37,10 +25,6 @@ module Report
     end
 
     def first_week
-      raise 'implement this'
-    end
-
-    def column_names
       raise 'implement this'
     end
 

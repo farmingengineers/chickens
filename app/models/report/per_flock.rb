@@ -20,7 +20,7 @@ module Report
       flocks.map { |flock| flock.first_week }.compact.min
     end
 
-    def column_names
+    def data_column_names
       flocks.map &:to_s
     end
 

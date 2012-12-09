@@ -25,6 +25,10 @@ module Report
       self.class.human_name
     end
 
+    def types
+      []
+    end
+
     protected
 
     attr_reader :params
