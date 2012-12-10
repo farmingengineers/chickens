@@ -11,8 +11,10 @@ body > .env-marker {
   :link       { text-decoration: none;      }
   :link:hover { text-decoration: underline; }
 
-  .actions          { visibility: hidden;  }
-  :hover > .actions { visibility: visible; }
+  .action-container {
+    .actions          { visibility: hidden;  }
+    :hover > .actions { visibility: visible; }
+  }
 }
 
 li.flock {

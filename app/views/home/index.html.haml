@@ -4,7 +4,7 @@ Welcome to the chicken app!
   %h2 Your flocks
   %ul.flocks
     - flocks.each do |flock|
-      %li.flock
+      %li.flock.action-container
         .summary
           = link_to flock.name, flock
           - if flock.most_recent_activity_on
