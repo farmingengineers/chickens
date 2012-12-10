@@ -12,8 +12,8 @@ body > .env-marker {
   :link:hover { text-decoration: underline; }
 
   .action-container {
-    .actions          { visibility: hidden;  }
-    :hover > .actions { visibility: visible; }
+    .actions         { visibility: hidden;  }
+    &:hover .actions { visibility: visible; }
   }
 }
 
