@@ -13,7 +13,7 @@ class Flock < ActiveRecord::Base
   end
 
   def recent_activity
-    data_points.order('occurred_on desc')
+    data_points.order('occurred_on desc').includes(:data_type)
   end
 
   def most_recent_activity_on
