@@ -6,10 +6,6 @@ class Feeder < Bookkeeper
     super.merge :data_type_id => params[:data_type_id]
   end
 
-  def quantity_param
-    :pounds
-  end
-
   def data_association
     flock.feedings
   end

@@ -1,8 +1,5 @@
 - data_types ||= nil
 = form_tag :action => :create do
-  .field
-    = label_tag :start_on
-    = text_field_tag :start_on, nil, class: 'date'
   - if data_types
     .field
       = label_tag 'data_type', data_type_label
@@ -12,11 +9,9 @@
           %option{value: dt.to_param}= dt
   .field
     = label_tag :frequency
-    %select{name: 'frequency'}
+    %select{class: 'js-frequency'}
       %option{value: 'daily'} Daily
       %option{value: 'weekly'} Weekly
-  .field
-    = label_tag quantity_param
-    = text_area_tag quantity_param
+  .data-point-entry
   .field
     = submit_tag
