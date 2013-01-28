@@ -18,7 +18,7 @@ end
 
 gem 'jquery-rails'
 gem 'haml-rails'
-gem 'devise'
+gem 'devise', '~> 2.1.0'
 gem 'decent_exposure'
 
 group :development do
