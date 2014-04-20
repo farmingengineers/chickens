@@ -22,6 +22,7 @@ gem 'jquery-rails'
 gem 'haml-rails'
 gem 'devise', '~> 2.1.0'
 gem 'decent_exposure'
+gem 'rails_12factor'
 
 group :development do
   gem 'powder', :require => false
