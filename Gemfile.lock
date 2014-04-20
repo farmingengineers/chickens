@@ -81,8 +81,7 @@ GEM
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.19)
-    modernizr (2.6.2)
-      sprockets (~> 2.0)
+    modernizr-rails (2.7.1)
     multi_json (1.5.0)
     orm_adapter (0.4.0)
     pg (0.14.1)
@@ -165,7 +164,7 @@ DEPENDENCIES
   haml-rails
   jquery-rails
   letter_opener
-  modernizr
+  modernizr-rails
   pg
   powder
   rails
