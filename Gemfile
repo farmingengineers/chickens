@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+ruby "2.1.0"
+
 gem 'rails'
 gem 'thin'
 
@@ -29,7 +31,7 @@ end
 group :development, :test do
   gem 'rspec-rails'
   gem 'sqlite3'
-  gem 'debugger'
+  gem 'byebug'
 end
 
 group :production do
