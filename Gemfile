@@ -22,7 +22,6 @@ gem 'devise', '~> 2.1.0'
 gem 'decent_exposure'
 
 group :development do
-  gem 'heroku', :require => false
   gem 'powder', :require => false
   gem 'letter_opener'
 end
