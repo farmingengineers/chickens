@@ -8,10 +8,7 @@ reportRenderers.graph = (report, data) ->
 
   parseVal = (v) ->
     v = +v
-    if !isNan(v) && isFinite(v)
-      v
-    else
-      null
+    if isNaN(v) then null else v
 
   margin =
     top    : 20
