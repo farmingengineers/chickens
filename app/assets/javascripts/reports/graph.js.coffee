@@ -6,6 +6,8 @@ reportRenderers.graph = (report, data) ->
   parseDate = d3.time.format('%Y-%m-%d').parse
   parsedDates = (parseDate(row[0]) for row in data.rows)
 
+  parseVal = (v) -> +v
+
   margin =
     top    : 20
     bottom : 30
@@ -37,7 +39,7 @@ reportRenderers.graph = (report, data) ->
   x.domain     d3.extent(parsedDates)
   y.domain(
     for agg in [d3.min, d3.max]
-      agg(data.rows, (row) -> agg(row.slice(1), (v) -> +v))
+      agg(data.rows, (row) -> agg(row.slice(1), parseVal))
   )
 
   svg.append("g")
@@ -61,15 +63,15 @@ reportRenderers.graph = (report, data) ->
 
   filterLine = (column) ->
     for row, i in data.rows when row[column.index]
-      {week: parsedDates[i], value: row[column.index]}
+      {week: parsedDates[i], value: parseVal(row[column.index])}
   series.append('path')
     .attr('class', 'line')
     .attr('d', (d) -> line(filterLine(d)))
     .style('stroke', (d) -> color(d.index))
 
   last_point = (column) ->
-    for row, i in data.rows when +row[column.index]
-      return {week: parsedDates[i], value: +row[column.index]}
+    for row, i in data.rows when parseVal(row[column.index])
+      return {week: parsedDates[i], value: parseVal(row[column.index])}
     {week: d3.max(parsedDates), value: 0}
   series.append('text')
     .datum((d) -> {name: d.name, value: last_point(d), color: color(d.index)})
