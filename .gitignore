@@ -7,6 +7,9 @@
 # Ignore bundler config
 /.bundle
 
+# Ignore .ruby-version, let that vary by machine.
+/.ruby-version
+
 # Ignore the default SQLite database.
 /db/*.sqlite3
 
