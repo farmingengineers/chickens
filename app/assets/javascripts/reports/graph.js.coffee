@@ -6,7 +6,12 @@ reportRenderers.graph = (report, data) ->
   parseDate = d3.time.format('%Y-%m-%d').parse
   parsedDates = (parseDate(row[0]) for row in data.rows)
 
-  parseVal = (v) -> +v
+  parseVal = (v) ->
+    v = +v
+    if !isNan(v) && isFinite(v)
+      v
+    else
+      null
 
   margin =
     top    : 20
