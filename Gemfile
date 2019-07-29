@@ -10,7 +10,6 @@ gem 'unicorn'
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
-  gem 'modernizr-rails'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', :platforms => :ruby
@@ -25,7 +24,6 @@ gem 'decent_exposure'
 gem 'rails_12factor'
 
 group :development do
-  gem 'powder', :require => false
   gem 'letter_opener'
 end
 

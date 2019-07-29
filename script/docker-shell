@@ -13,4 +13,4 @@ set -x
 # 2.5.5
 # 2.6.3
 docker build --rm --force-rm -t $image --target base .
-exec docker run -it --rm -v $(pwd):/shadow -w /shadow $image /bin/bash -l
+exec docker run -it --rm -p 3000:3000 -v $(pwd):/shadow -w /shadow $image /bin/bash -l
