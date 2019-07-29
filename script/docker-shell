@@ -1,0 +1,16 @@
+#!/bin/bash
+
+set -e
+set -o nounset
+
+image=chickens
+
+set -x
+
+# 2.2 (2.2.10)
+# 2.3 (2.3.8)
+# 2.4 (2.4.6)
+# 2.5.5
+# 2.6.3
+docker build --rm --force-rm -t $image --target base .
+exec docker run -it --rm -v $(pwd):/shadow -w /shadow $image /bin/bash -l
