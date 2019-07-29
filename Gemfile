@@ -29,7 +29,7 @@ end
 
 group :development, :test do
   gem 'rspec-rails'
-  gem 'sqlite3', '~> 1.3.5'
+  gem 'sqlite3'
   gem 'byebug'
 end
 
