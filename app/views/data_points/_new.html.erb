@@ -1,0 +1,27 @@
+<% data_types ||= nil %>
+<%= form_tag :action => :create do %>
+  <% if data_types %>
+    <div class="field">
+      <%= label_tag 'data_type', data_type_label %>
+      <select name="data_type_id">
+        <option></option>
+        <% data_types.each do |dt| %>
+          <option value="<%= dt.to_param %>">
+            <%= dt %>
+          </option>
+        <% end %>
+      </select>
+    </div>
+  <% end %>
+  <div class="field">
+    <%= label_tag :frequency %>
+    <select class="js-frequency">
+      <option value="daily">Daily</option>
+      <option value="weekly">Weekly</option>
+    </select>
+  </div>
+  <div class="data-point-entry"></div>
+  <div class="field">
+    <%= submit_tag %>
+  </div>
+<% end %>

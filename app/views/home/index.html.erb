@@ -1,0 +1,22 @@
+Welcome to the chicken app!
+<% if user_signed_in? %>
+  <h2>Your flocks</h2>
+  <ul class="flocks">
+    <% flocks.each do |flock| %>
+      <li class="flock action-container">
+        <div class="summary">
+          <%= link_to flock.name, flock %>
+          <% if flock.most_recent_activity_on %>
+            last modified
+            <time date="<%= flock.most_recent_activity_on %>" title="<%= flock.most_recent_activity_on %>">
+              <%= time_ago_in_words flock.most_recent_activity_on %>
+            </time>
+            ago
+          <% end %>
+        </div>
+        <%= render 'flocks/actions', :flock => flock %>
+      </li>
+    <% end %>
+  </ul>
+  <%= link_to 'Add a flock', new_flock_path %>
+<% end %>

@@ -1,0 +1,4 @@
+<h1>
+  <%= report.human_name %>
+</h1>
+<div class="<%= report.types.join(' ') %> report" data-report="<%= url_for(:format => 'json') %>"></div>

@@ -1,0 +1,10 @@
+<h2>Feed Types</h2>
+<ul>
+  <% feed_types.each do |feed_type| %>
+    <li>
+      <%= link_to 'edit', [:edit, feed_type] %>
+      <%= feed_type %>
+    </li>
+  <% end %>
+</ul>
+<%= link_to 'new', new_feed_type_path %>
