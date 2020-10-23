@@ -15,4 +15,4 @@ RUN cd / && tar xf node.tar.xz --strip-components 1 -C /usr/local
 FROM base
 ADD . .
 RUN bin/rake db:migrate RAILS_ENV=test
-RUN bin/rspec
+RUN bundle exec rspec
