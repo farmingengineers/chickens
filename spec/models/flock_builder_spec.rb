@@ -1,10 +1,8 @@
 require 'spec_helper'
 
 describe FlockBuilder do
-  fixtures :farms
-
   let(:flock_builder) { FlockBuilder.new current_user }
-  let(:current_user) { mock_model('User', :farms => farms_FFUU) }
+  let(:current_user) { mock_model('User', :farms => farms) }
   let(:params) { { :flock => { :name => 'New flock' } }.with_indifferent_access }
   subject { flock_builder.build params }
 
@@ -14,7 +12,7 @@ describe FlockBuilder do
   end
 
   context 'no farms' do
-    let(:farms_FFUU) { [] }
+    let(:farms) { [] }
     it('builds two records') { subject.size.should == 3 }
     it('builds a farm record') { subject[0].should be_a Farm }
     it('builds a farmer record') { subject[1].should be_a Farmer }
@@ -28,8 +26,8 @@ describe FlockBuilder do
   end
 
   context 'one farm' do
-    let(:farms_FFUU) { [ farm ] }
-    let(:farm) { farms(:example) }
+    let(:farms) { [ farm ] }
+    let(:farm) { mock_model('Farm', :id => 2) }
     it('builds one record') { subject.size.should == 1 }
     it('builds a flock record') { subject[0].should be_a Flock }
     it_behaves_like 'flock' do
