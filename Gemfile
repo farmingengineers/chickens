@@ -21,7 +21,7 @@ group :assets do
 end
 
 gem 'jquery-rails'
-gem 'devise', '3.0.2'
+gem 'devise', '3.5.10'
 gem 'decent_exposure'
 gem 'rails_12factor'
 

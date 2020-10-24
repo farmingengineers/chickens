@@ -2,6 +2,9 @@ $configure_devise = ENV['RAILS_GROUPS'] != 'assets'
 # Use this hook to configure devise mailer, warden hooks and so forth.
 # Many of these configuration options can be set straight in your model.
 Devise.setup do |config|
+  # TODO - remove this when upgrading to rails 4
+  config.secret_key = 'c2753210bbe69dbb4d9492be8989950f2d2c1d0a60c0f3959348ea94c2eaf9470e9b20c1b13100c26912760b2ebaec332aeea66071cb6462503ef83c8b0808b0'
+
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class with default "from" parameter.
