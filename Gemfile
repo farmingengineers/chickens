@@ -2,8 +2,11 @@ source 'https://rubygems.org'
 
 ruby "2.1.9"
 
-gem 'rails'
+gem 'rails', '3.2.22.5'
 gem 'unicorn'
+
+gem 'rake', '10.0.3'
+gem 'rack-cache', '1.2'
 
 # Gems used only for assets and not required
 # in production environments by default.
