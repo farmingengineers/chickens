@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 ruby "2.1.9"
 
-gem 'rails', '4.1.16'
+gem 'rails', '4.0.13'
 gem 'unicorn'
 
 gem 'protected_attributes'
@@ -11,19 +11,17 @@ gem 'protected_attributes'
 gem 'rake', '10.0.3'
 gem 'rack-cache', '1.2'
 gem 'ffi', '1.12'
-gem 'minitest', '5.1'
 
 gem 'sass-rails'
 gem 'uglifier', '>= 1.0.3'
 
 gem 'jquery-rails'
 gem 'devise', '3.5.10'
-gem 'decent_exposure', '2.3.3'
+gem 'decent_exposure'
 gem 'rails_12factor'
 
 group :development do
   gem 'letter_opener'
-  gem 'spring', '1.7.2' # can be 2.1.1 when i update ruby
 end
 
 group :development, :test do
