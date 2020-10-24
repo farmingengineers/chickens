@@ -11,7 +11,7 @@ class FarmAssetBuilder
       records << (farm = Farm.new)
       records << Farmer.new(:farm => farm, :user => user)
     end
-    attrs = filter(params[klass.model_name.underscore] || {})
+    attrs = filter(params[klass.model_name.param_key] || {})
     records << klass.new(attrs.merge(:farm => farm))
     records
   end
