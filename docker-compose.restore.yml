@@ -1,0 +1,20 @@
+services:
+  restore:
+    image: "postgres:14.1"
+    command:
+      - "pg_restore"
+      - "--verbose"
+      - "--clean"
+      - "--no-acl"
+      - "--no-owner"
+      - "-h"
+      - "db"
+      - "-U"
+      - "postgres"
+      - "-d"
+      - "chickens"
+      - "/chickens-db.dump"
+    volumes:
+      - "/Users/spraints/Dropbox/self/Farm/chickens-db.dump:/chickens-db.dump:ro"
+    environment:
+      PGPASSWORD: pgpass
