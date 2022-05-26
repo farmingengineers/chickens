@@ -1,0 +1,27 @@
+# Usage:
+#   docker-compose up -d
+#   script/load-archive
+#   open http://127.0.0.1:9737
+#   choose "postgresql", "db", "postgres", "pgpass", "chickens"
+#
+#   example query:
+#     SELECT dp.flock_id, f.name, dp.occurred_on, dp.quantity
+#     FROM "data_points" dp
+#       JOIN "flocks" f ON f.id = dp.flock_id
+#     WHERE type = 'EggCollection'
+#     ORDER BY dp.flock_id DESC, dp.occurred_on DESC
+services:
+  adminer:
+    image: "adminer"
+    ports:
+      - "127.0.0.1:9737:8080"
+  db:
+    image: "postgres:14.1"
+    volumes:
+      - "pgdata:/var/lib/postgresql/data"
+    environment:
+      POSTGRES_PASSWORD: pgpass
+      POSTGRES_DB: chickens
+
+volumes:
+  pgdata:
